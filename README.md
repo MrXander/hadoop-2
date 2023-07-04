@@ -21,3 +21,15 @@ Please use the included docker-compose.yaml to test it:
 docker-compose build
 docker-compose up -d
 ```
+
+Check how it works:
+
+```
+docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'
+docker exec -it hadoop-docker-hadoop-2_namenode_1 /bin/bash
+yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.9.0.jar pi 10 15
+```
+
+### Accessing the UI  
+
+The Namenode UI can be accessed at http://localhost:50070/ and the ResourceManager UI can be accessed at http://localhost:8088/

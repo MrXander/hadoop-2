@@ -15,6 +15,7 @@
 
 version: "2"
 services:
+   
    namenode:
       build: .
       hostname: namenode
@@ -25,11 +26,13 @@ services:
         - ./config
       environment:
           ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+   
    datanode:
       build: .
       command: ["hdfs", "datanode"]
       env_file:
         - ./config
+   
    resourcemanager:
       build: .
       hostname: resourcemanager
@@ -40,6 +43,7 @@ services:
         - ./config
       volumes:
         - ./test.sh:/opt/test.sh
+   
    nodemanager:
       build: .
       command: ["yarn", "nodemanager"]
